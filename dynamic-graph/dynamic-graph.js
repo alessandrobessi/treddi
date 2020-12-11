@@ -29,7 +29,7 @@ animate();
 
 function init() {
 
-    container = document.getElementById('header');
+    container = document.getElementById('canvas');
 
     camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 1, 4000);
     camera.position.z = 1750;
