@@ -22,7 +22,7 @@ K2 = v_nd*t_nd/r_nd
 m1 = 1
 m2 = 1
 m3 = 1
-m4 = 0.0000001
+m4 = 0.000001
 
 # Initial positions
 r1 = np.array([-2, 0, 0], dtype="float64")
@@ -72,6 +72,7 @@ def four_body_equations(w, t, G, m1, m2, m3, m4):
 
 init_params = np.array([r1, r2, r3, r4, v1, v2, v3, v4]).flatten()
 
+# 1600 orbital periods, 32000 data points
 time_span = np.linspace(0, 1600, 32000)
 solutions = scipy.integrate.odeint(four_body_equations, init_params, time_span, args=(G, m1, m2, m3, m4))
 

@@ -26,25 +26,24 @@ var renderer = new THREE.WebGLRenderer({ "antialias": true });
 renderer.setSize(window.innerWidth, window.innerHeight);
 document.body.appendChild(renderer.domElement);
 
-var geometry = new THREE.SphereGeometry(0.1, 32, 32);
-var geometrySmall = new THREE.SphereGeometry(0.05, 32, 32);
+var geometry = new THREE.SphereGeometry(0.2, 32, 32);
+var geometrySmall = new THREE.SphereGeometry(0.1, 32, 32);
 var material = new THREE.MeshNormalMaterial();
 
 var planet1 = new THREE.Mesh(geometry, material);
-planet1.position.x -= 0.5
+planet1.position.x -= 2;
 scene.add(planet1);
 
 var planet2 = new THREE.Mesh(geometry, material);
-planet2.position.x += 0.5
+planet2.position.x += 2;
 scene.add(planet2);
 
 var planet3 = new THREE.Mesh(geometry, material);
-planet3.position.y += 1
+planet3.position.y += Math.sqrt(3);
 scene.add(planet3);
 
 var planet4 = new THREE.Mesh(geometrySmall, material);
-planet4.position.y += 0.5
-planet4.position.z += 0.5
+planet4.position.y += Math.sqrt(3) / 2;
 scene.add(planet4);
 
 camera.position.z = 20;
@@ -102,10 +101,10 @@ function onKeyDown(e) {
 			camera.position.x -= 0.1;
 			break;
 		case "a":
-			camera.position.z += 0.1;
+			camera.position.z += 0.5;
 			break;
 		case "z":
-			camera.position.z -= 0.1;
+			camera.position.z -= 0.5;
 			break;
 	}
 }
