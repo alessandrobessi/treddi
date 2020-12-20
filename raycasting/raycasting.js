@@ -1,6 +1,6 @@
 import * as THREE from 'https://unpkg.com/three/build/three.module.js';
 
-
+let description;
 let container;
 let camera, scene, raycaster, renderer;
 
@@ -15,6 +15,8 @@ animate();
 
 function init() {
 
+    description = document.getElementById('description');
+    description.innerHTML = "No point selected.";
     container = document.createElement('div');
     document.body.appendChild(container);
 
@@ -45,7 +47,7 @@ function init() {
     object.rotation.y = Math.random() * 2 * Math.PI;
     object.rotation.z = Math.random() * 2 * Math.PI;
 
-    object.set
+    object.userData = {"value": "42"};
 
     scene.add(object);
 
@@ -99,6 +101,7 @@ function render() {
 
     if (intersects.length > 0) {
         console.log(intersects[0]);
+        description.innerHTML = intersects[0].object.userData.value;
 
         if (INTERSECTED != intersects[0].object) {
 
@@ -117,6 +120,7 @@ function render() {
         if (INTERSECTED) {
             INTERSECTED.material.emissive.setHex(INTERSECTED.currentHex);
         }
+        description.innerHTML = "No intersection.";
         INTERSECTED = null;
     }
 
