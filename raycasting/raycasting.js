@@ -8,7 +8,6 @@ let INTERSECTED;
 let object;
 
 const mouse = new THREE.Vector2();
-const radius = 100;
 
 init();
 animate();
@@ -16,7 +15,7 @@ animate();
 function init() {
 
     description = document.getElementById('description');
-    description.innerHTML = "No point selected.";
+    description.innerHTML = "No intersection.";
     container = document.createElement('div');
     document.body.appendChild(container);
 
