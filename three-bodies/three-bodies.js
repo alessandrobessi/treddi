@@ -26,8 +26,8 @@ var renderer = new THREE.WebGLRenderer({ "antialias": true });
 renderer.setSize(window.innerWidth, window.innerHeight);
 document.body.appendChild(renderer.domElement);
 
-var geometry = new THREE.SphereGeometry(0.2, 32, 32);
-var geometrySmall = new THREE.SphereGeometry(0.1, 32, 32);
+var geometry = new THREE.SphereGeometry(0.4, 32, 32);
+var geometrySmall = new THREE.SphereGeometry(0.2, 32, 32);
 var material = new THREE.MeshNormalMaterial();
 
 var planet1 = new THREE.Mesh(geometry, material);
@@ -50,6 +50,8 @@ camera.position.z = 20;
 camera.position.y += 5;
 
 window.addEventListener('keydown', onKeyDown, false);
+window.addEventListener('resize', onWindowResize, false);
+
 
 var animate = function () {
 	id = requestAnimationFrame(animate);
@@ -85,6 +87,12 @@ var animate = function () {
 
 	renderer.render(scene, camera);
 };
+
+function onWindowResize() {
+	camera.aspect = window.innerWidth / window.innerHeight;
+	camera.updateProjectionMatrix();
+	renderer.setSize(window.innerWidth, window.innerHeight);
+}
 
 function onKeyDown(e) {
 	switch (e["key"]) {
